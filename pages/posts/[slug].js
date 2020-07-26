@@ -23,7 +23,9 @@ export default function Post({ post, morePosts, preview }) {
       <Container>
         {/* <Header /> */}
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <div className="text-md mt-4">
+            <PostTitle>Loading…</PostTitle>
+          </div>
         ) : (
             <>
               <article>
@@ -47,7 +49,7 @@ export default function Post({ post, morePosts, preview }) {
                   content={post.content}
                 />
               </article>
-              {/* <div className="mt-16"/> */}
+              <div className="mt-16" />
               {/* <SectionSeparator /> */}
               {/* {morePosts && morePosts.length > 0 && (
                 <MoreStories posts={morePosts} />

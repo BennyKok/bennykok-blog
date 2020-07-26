@@ -22,20 +22,14 @@ export default function PostPreview({
 
   return (
     <div>
-      {/* <Link as={`/posts/${slug}`} href="/posts/[slug]"> */}
       <a>
-        {/* lg:max-w-full lg:flex */}
-        <div className="max-w-md rounded-lg border border-gray-400 bg-white">
-          {/* md:h-64 lg:w-2/5  */}
+        <div className="w-full rounded-lg border border-gray-400 bg-white" style={{ height: '30rem' }}>
           <div className="h-64 flex-none bg-cover text-center overflow-hidden rounded-t-lg"
             style={{ backgroundImage: `url(${coverImage.url})` }} title={title}>
           </div>
-          {/* lg:w-3/5 */}
-          {/* lg:border-l-0 */}
-          {/* lg:border-gray-400 */}
-          {/* lg:rounded-b-none lg:rounded-r */}
-          {/* border-r border-b border-l  border-none border-gray-400 */}
-          <div className="p-4 py-6 flex flex-col justify-between leading-normal">
+
+          <div className="h-56 p-4 py-6 flex flex-col justify-between leading-normal">
+
             <div className="mb-4">
               <Link as={`/posts/${slug}`} href="/posts/[slug]">
                 <a
@@ -44,41 +38,42 @@ export default function PostPreview({
                 </a>
               </Link>
               <p className="text-sm leading-relaxed mb-2">{excerpt}</p>
-              {/* <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p> */}
             </div>
 
-            <div className="flex flex-row justify-between items-center">
-              <div className="text-sm font-bold text-gray-800">
-                <Date dateString={date} />
+            <div>
+
+              <div className="flex flex-row justify-between items-center">
+                <div className="text-sm font-bold text-gray-800">
+                  <Date dateString={date} />
+                </div>
+                <div className={over ? "transform translate-x-1 transition-transform duration-150" : "transform transition-transform duration-150"}>
+                  <Link as={`/posts/${slug}`} href="/posts/[slug]">
+                    <a className="flex flex-row items-center" onMouseOver={() => setOver(true)} onMouseOut={() => setOver(false)}>
+                      <div className={cn(
+                        "mr-1 font-bold text-sm",
+                        {
+                          'underline': over
+                        }
+                      )}>Read More</div>
+                      <div className="transform rotate-180">
+                        <IconContext.Provider value={{ size: "1.5em" }}>
+                          <MdKeyboardBackspace />
+                        </IconContext.Provider>
+                      </div>
+                    </a>
+                  </Link>
+                </div>
               </div>
-              <div className={over ? "transform translate-x-1 transition-transform duration-150" : "transform transition-transform duration-150"}>
-                <Link as={`/posts/${slug}`} href="/posts/[slug]">
-                  <a className="flex flex-row items-center" onMouseOver={() => setOver(true)} onMouseOut={() => setOver(false)}>
-                    <div className={cn(
-                      "mr-1 font-bold text-sm",
-                      {
-                        'underline': over
-                      }
-                    )}>Read More</div>
-                    <div className="transform rotate-180">
-                      <IconContext.Provider value={{ size: "1.5em" }}>
-                        <MdKeyboardBackspace />
-                      </IconContext.Provider>
-                    </div>
-                  </a>
-                </Link>
+
+              <div className="mt-4">
+                <Tags tags={tags} />
               </div>
+
             </div>
 
-            <div className="mt-4">
-              <Tags tags={tags} />
-            </div>
-
-            {/* <Avatar name={author.name} picture={author.picture} /> */}
           </div>
         </div>
       </a>
-      {/* </Link> */}
     </div >
   )
 }

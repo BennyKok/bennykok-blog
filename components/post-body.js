@@ -4,7 +4,7 @@ import Avatar from '../components/avatar'
 import Date from '../components/date'
 import PostTitle from '../components/post-title'
 import ReactMarkdown from 'react-markdown'
-
+import CodeBlock from "./code-block";
 
 export default function PostBody({ content, title, author, date }) {
   return (
@@ -14,7 +14,10 @@ export default function PostBody({ content, title, author, date }) {
         {/* className={markdownStyles['markdown']} */}
         {/* markdown-body */}
         <div className="prose max-w-none">
-          <ReactMarkdown source={RichText.asText(content)} />
+          <ReactMarkdown
+            source={RichText.asText(content)}
+            renderers={{ code: CodeBlock }}
+          />
         </div>
         {/* <RichText render={content} /> */}
       </div>

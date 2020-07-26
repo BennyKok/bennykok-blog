@@ -12,6 +12,10 @@ module.exports = {
           h1: {
             fontWeight: '700',
             textColor: '#424242',
+          },
+          img: {
+            marginTop: '1.25rem',
+            marginBottom: '1.25rem',
           }
         },
       },
