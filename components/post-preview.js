@@ -3,36 +3,82 @@ import { RichText } from 'prismic-reactjs'
 import Avatar from '../components/avatar'
 import Date from '../components/date'
 import CoverImage from './cover-image'
+import { MdKeyboardBackspace, } from "react-icons/md";
+import { IconContext } from "react-icons";
+import cn from 'classnames'
+import Tags from './tags'
 
 export default function PostPreview({
   title,
+  tags,
   coverImage,
   date,
   excerpt,
   author,
   slug,
 }) {
+
+  let [over, setOver] = React.useState(false);
+
   return (
     <div>
-      <div className="mb-5">
-        <CoverImage
-          title={RichText.asText(title)}
-          slug={slug}
-          url={coverImage.url}
-        />
-      </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a className="hover:underline">
-            <RichText render={title} />
-          </a>
-        </Link>
-      </h3>
-      <div className="text-lg mb-4">
-        <Date dateString={date} />
-      </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
-    </div>
+      {/* <Link as={`/posts/${slug}`} href="/posts/[slug]"> */}
+      <a>
+        {/* lg:max-w-full lg:flex */}
+        <div className="max-w-md rounded-lg border border-gray-400 bg-white">
+          {/* md:h-64 lg:w-2/5  */}
+          <div className="h-64 flex-none bg-cover text-center overflow-hidden rounded-t-lg"
+            style={{ backgroundImage: `url(${coverImage.url})` }} title={title}>
+          </div>
+          {/* lg:w-3/5 */}
+          {/* lg:border-l-0 */}
+          {/* lg:border-gray-400 */}
+          {/* lg:rounded-b-none lg:rounded-r */}
+          {/* border-r border-b border-l  border-none border-gray-400 */}
+          <div className="p-4 py-6 flex flex-col justify-between leading-normal">
+            <div className="mb-4">
+              <Link as={`/posts/${slug}`} href="/posts/[slug]">
+                <a
+                  className="hover:underline text-gray-800 font-bold text-xl mb-2">
+                  <RichText render={title} />
+                </a>
+              </Link>
+              <p className="text-sm leading-relaxed mb-2">{excerpt}</p>
+              {/* <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p> */}
+            </div>
+
+            <div className="flex flex-row justify-between items-center">
+              <div className="text-sm font-bold text-gray-800">
+                <Date dateString={date} />
+              </div>
+              <div className={over ? "transform translate-x-1 transition-transform duration-150" : "transform transition-transform duration-150"}>
+                <Link as={`/posts/${slug}`} href="/posts/[slug]">
+                  <a className="flex flex-row items-center" onMouseOver={() => setOver(true)} onMouseOut={() => setOver(false)}>
+                    <div className={cn(
+                      "mr-1 font-bold text-sm",
+                      {
+                        'underline': over
+                      }
+                    )}>Read More</div>
+                    <div className="transform rotate-180">
+                      <IconContext.Provider value={{ size: "1.5em" }}>
+                        <MdKeyboardBackspace />
+                      </IconContext.Provider>
+                    </div>
+                  </a>
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <Tags tags={tags} />
+            </div>
+
+            {/* <Avatar name={author.name} picture={author.picture} /> */}
+          </div>
+        </div>
+      </a>
+      {/* </Link> */}
+    </div >
   )
 }

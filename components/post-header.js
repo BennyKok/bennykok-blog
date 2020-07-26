@@ -3,24 +3,34 @@ import Avatar from '../components/avatar'
 import Date from '../components/date'
 import CoverImage from '../components/cover-image'
 import PostTitle from '../components/post-title'
+import Tags from './tags'
 
-export default function PostHeader({ title, coverImage, date, author }) {
+export default function PostHeader({ title, tags, coverImage, date, author }) {
   return (
     <>
-      <PostTitle>{title[0].text}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        {author && <Avatar name={author.name} picture={author.picture} />}
+      <div className="mx-auto">
+        <div className="mb-6">
+
+          <div className="mt-4 md:mt-6 text-gray-800">
+            <PostTitle >{title[0].text}</PostTitle>
+          </div>
+
+          <div className="mb-8">
+            <Tags tags={tags} />
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            {author && <Avatar name={author.name} picture={author.picture} />}
+            <div className="text-sm text-center">
+              <Date dateString={date} />
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
+
+      <div className="mb-2 md:mb-8 ">
         <CoverImage title={RichText.asText(title)} url={coverImage.url} />
-      </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
-          {author && <Avatar name={author.name} picture={author.picture} />}
-        </div>
-        <div className="mb-6 text-lg">
-          <Date dateString={date} />
-        </div>
       </div>
     </>
   )

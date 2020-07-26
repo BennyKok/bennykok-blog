@@ -1,5 +1,21 @@
 module.exports = {
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
   theme: {
+    fontFamily: {
+      sans: ['Open Sans', 'sans-serif'],
+    },
+    typography: {
+      default: {
+        css: {
+          h1: {
+            fontWeight: '700',
+            textColor: '#424242',
+          }
+        },
+      },
+    },
     extend: {
       colors: {
         'accent-1': '#FAFAFA',

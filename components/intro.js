@@ -1,28 +1,41 @@
-import { CMS_NAME, CMS_URL } from '../lib/constants'
+import Container from './container'
+import Link from 'next/link'
+import { MdKeyboardBackspace, } from "react-icons/md";
+import { IconContext } from "react-icons";
 
-export default function Intro() {
+export default function Intro({ showBackNavigation }) {
+  let [over, setOver] = React.useState(false);
+
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-      <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
-        Blog.
-      </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        A statically generated blog example using{' '}
-        <a
-          href="https://nextjs.org/"
-          className="underline hover:text-success duration-200 transition-colors"
-        >
-          Next.js
-        </a>{' '}
-        and{' '}
-        <a
-          href={CMS_URL}
-          className="underline hover:text-success duration-200 transition-colors"
-        >
-          {CMS_NAME}
-        </a>
-        .
-      </h4>
-    </section>
+    <div className="bg-accent-1 border-b border-accent-2">
+      <Container className="">
+        {showBackNavigation ?
+          <div onMouseOver={() => setOver(true)} onMouseOut={() => setOver(false)} className="inline-block">
+            <Link href="/" >
+              <a className="py-6 inline-flex flex-row items-center justify-start">
+                <div className={over ? "transform -translate-x-2 transition-transform duration-150" : "transform transition-transform duration-150"}>
+                  <IconContext.Provider value={{ size: "1.5em" }}>
+                    <MdKeyboardBackspace />
+                  </IconContext.Provider>
+                </div>
+                <h1 className="ml-2 text-xl font-bold tracking-tighter leading-tight md:pr-8">
+                  BennyKok
+              </h1>
+              </a>
+            </Link>
+          </div>
+          :
+          <div className="py-4 flex flex-row items-center">
+            <img
+              src="/icon48.png"
+              className="w-10 h-10 rounded-full mr-3"
+            />
+            <h1 className="text-xl font-bold tracking-tighter leading-tight md:pr-8">
+              BennyKok
+          </h1>
+          </div>
+        }
+      </Container>
+    </div>
   )
 }

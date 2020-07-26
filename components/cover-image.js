@@ -6,13 +6,14 @@ export default function CoverImage({ title, url, slug }) {
     <img
       src={url}
       alt={`Cover Image for ${title}`}
-      className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
-      })}
+      className="rounded-md"
+      // className={cn('shadow-small', {
+      //   'hover:shadow-medium transition-shadow duration-200 rounded-lg': slug,
+      // })}
     />
   )
   return (
-    <div className="-mx-5 sm:mx-0">
+    <div className="mt-2  sm:mx-0 md:ml-0 md:mr-0">
       {slug ? (
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
           <a aria-label={title}>{image}</a>

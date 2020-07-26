@@ -19,42 +19,49 @@ export default function Post({ post, morePosts, preview }) {
   }
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} showBackNavigation={true}>
       <Container>
-        <Header />
+        {/* <Header /> */}
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
-          <>
-            <article>
-              <Head>
-                <title>
-                  {post.title[0].text} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.coverimage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverimage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
-            <SectionSeparator />
-            {morePosts && morePosts.length > 0 && (
-              <MoreStories posts={morePosts} />
-            )}
-          </>
-        )}
+            <>
+              <article>
+                <Head>
+                  <title>
+                    {post.title[0].text}
+                  </title>
+                  <meta property="og:image" content={post.coverimage.url} />
+                </Head>
+                <PostHeader
+                  title={post.title}
+                  tags={post._meta.tags}
+                  coverImage={post.coverimage}
+                  date={post.date}
+                  author={post.author}
+                />
+                <PostBody
+                  title={post.title}
+                  author={post.author}
+                  date={post.date}
+                  content={post.content}
+                />
+              </article>
+              {/* <div className="mt-16"/> */}
+              {/* <SectionSeparator /> */}
+              {/* {morePosts && morePosts.length > 0 && (
+                <MoreStories posts={morePosts} />
+              )} */}
+            </>
+          )}
       </Container>
     </Layout>
   )
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const data = await getPostAndMorePosts(params.slug, previewData)
 
+  const data = await getPostAndMorePosts(params.slug, previewData)
   return {
     props: {
       preview,
