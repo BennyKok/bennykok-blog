@@ -15,7 +15,7 @@ export default function PostHeader({ title, tags, coverImage, date, author }) {
             <PostTitle >{title[0].text}</PostTitle>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 mt-4">
             <Tags tags={tags} />
           </div>
 

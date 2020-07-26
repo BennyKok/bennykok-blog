@@ -25,7 +25,7 @@ export default function PostPreview({
       <a>
         <div className="w-full rounded-lg border border-gray-400 bg-white" style={{ height: '30rem' }}>
           <div className="h-64 flex-none bg-cover text-center overflow-hidden rounded-t-lg"
-            style={{ backgroundImage: `url(${coverImage.url})` }} title={title}>
+            style={{ backgroundImage: `url(${coverImage.url})`, backgroundPosition: 'center' }} title={title}>
           </div>
 
           <div className="h-56 p-4 py-6 flex flex-col justify-between leading-normal">

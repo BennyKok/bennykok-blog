@@ -6,7 +6,7 @@ import { ascetic } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 export default function CodeBlock({ language, value }) {
     return (
-        <div className="border rounded p-2">
+        <div className="border rounded-md p-2">
             <SyntaxHighlighter language={language} style={ascetic} customStyle={{ margin: '0rem' }}>
                 {value}
             </SyntaxHighlighter>
