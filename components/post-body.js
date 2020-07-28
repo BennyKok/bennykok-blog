@@ -18,6 +18,7 @@ export default function PostBody({ content, title, author, date }) {
           <ReactMarkdown
             source={RichText.asText(content)}
             renderers={{ code: CodeBlock }}
+            linkTarget='_blank'
           />
         </div>
         {/* <RichText render={content} /> */}
