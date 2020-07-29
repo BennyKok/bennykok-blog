@@ -48,6 +48,7 @@ export default function Post({ post, morePosts, preview }) {
 
                 </Head>
                 <PostHeader
+                  has_affiliate_link={post.has_affiliate_link}
                   title={post.title}
                   tags={post._meta.tags}
                   coverImage={post.coverimage}
@@ -59,6 +60,7 @@ export default function Post({ post, morePosts, preview }) {
                   author={post.author}
                   date={post.date}
                   content={post.content}
+                  has_affiliate_link={post.has_affiliate_link}
                 />
               </article>
               <div className="mt-16" />

@@ -33,7 +33,7 @@ export default function CodeBlock({ language, value }) {
                         setIsOpened(!isOpened)
                     }}>
                         <div className='ml-2'>
-                            <b>{file}</b> {`- expand to see file or`} <a href={`https://gist.github.com/${id}`} target='_blank'>view on Github</a>
+                            <b>{file}</b> {`- Expand to see file or`} <a href={`https://gist.github.com/${id}`} target='_blank'>view on Github</a>
                         </div>
                         <div className={cn('mr-2', {
                             'transform transition-transform rotate-0 duration-150': !isOpened,

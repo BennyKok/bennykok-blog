@@ -5,7 +5,7 @@ import CoverImage from '../components/cover-image'
 import PostTitle from '../components/post-title'
 import Tags from './tags'
 
-export default function PostHeader({ title, tags, coverImage, date, author }) {
+export default function PostHeader({ has_affiliate_link, title, tags, coverImage, date, author }) {
   return (
     <>
       <div className="mx-auto">
