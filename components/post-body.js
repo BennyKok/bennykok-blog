@@ -18,7 +18,7 @@ export default function PostBody({ content, title, author, date, has_affiliate_l
     let [isOpened, setIsOpened] = React.useState(false);
     disclosures = (
       <div className="max-w-4xl mx-auto">
-        <button className='w-full focus:outline-none cursor-pointer text-sm p-2 bg-gray-100 transition-shadow duration-150 shadow-sm hover:shadow-md rounded-t border flex flex-row items-center justify-between' onClick={() => {
+        <button className='w-full focus:outline-none cursor-pointer text-sm px-4 md:px-6 py-3 bg-gray-100 transition-shadow duration-150 shadow-sm hover:shadow-md rounded-t border flex flex-row items-center justify-between' onClick={() => {
           setIsOpened(!isOpened)
         }}>
           <div className='ml-2 text-sm'>
@@ -55,7 +55,7 @@ export default function PostBody({ content, title, author, date, has_affiliate_l
 
       {/* ml-0 lg:ml-10 */}
       <div className={cn(
-        "bg-white overflow-hidden px-8 pb-8 shadow-lg max-w-4xl mx-auto", {
+        "bg-white overflow-hidden px-4 md:px-8 pb-8 shadow-lg max-w-4xl mx-auto", {
         'rounded-b': has_affiliate_link,
         'rounded': !has_affiliate_link,
       }
