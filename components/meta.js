@@ -19,7 +19,6 @@ export default function Meta() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'UA-154808166-1');
             `,
         }}
       />

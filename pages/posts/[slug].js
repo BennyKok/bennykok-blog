@@ -34,6 +34,18 @@ export default function Post({ post, morePosts, preview }) {
                     {post.title[0].text}
                   </title>
                   <meta property="og:image" content={post.coverimage.url} />
+
+                  <script
+                    dangerouslySetInnerHTML={{
+                      __html: `
+                      gtag('config', 'UA-154808166-1', {
+                        'page_title' : '${post.title[0].text}',
+                        'page_path': '/blog-home' + window.location.pathname
+                      });
+                      `,
+                    }}
+                  />
+
                 </Head>
                 <PostHeader
                   title={post.title}

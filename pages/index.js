@@ -13,6 +13,16 @@ export default function Index({ preview, allPosts }) {
       <Layout preview={preview}>
         <Head>
           <title>BennyKok</title>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            gtag('config', 'UA-154808166-1', {
+              'page_title' : 'Blog',
+              'page_path': '/blog-home/'
+            });
+            `,
+            }}
+          />
         </Head>
         <Container>
           {/* {heroPost && (
