@@ -39,7 +39,7 @@ export default function PostBody({ content, title, author, date, has_affiliate_l
               </IconContext.Provider>
             </div>
             <div className="ml-3 text-sm text-gray-800 bg-gray-100">
-              Greetings! There are some Unity affiliate links used in this blog post, I will receive commission if you purchase through these links. While clicking these links won't cost you a cent, it meant a lot to me personally.
+              Greetings! There are some Unity affiliate links used in this blog post, I will receive commission if you purchase through these links. While clicking these links won't cost you a cent, it means a lot to me personally.
             </div>
           </div>
         </Collapse>
