@@ -22,13 +22,13 @@ export default function PostPreview({
 
   return (
     <div>
-      <a>
-        <div className="w-full rounded-lg border border-gray-400 bg-white" style={{ height: '30rem' }}>
+        <div className="w-full rounded-lg border border-gray-400 bg-white" style={{ minHeight: '30rem' }}>
           <div className="h-64 flex-none bg-cover text-center overflow-hidden rounded-t-lg"
             style={{ backgroundImage: `url(${coverImage.url})`, backgroundPosition: 'center' }} title={title}>
           </div>
 
-          <div className="h-56 p-4 py-6 flex flex-col justify-between leading-normal">
+          {/* h-56  */}
+          <div className="p-4 py-6 flex flex-col justify-between leading-normal" style={{minHeight:'14rem'}}>
 
             <div className="mb-4">
               <Link as={`/posts/${slug}`} href="/posts/[slug]">
@@ -73,7 +73,6 @@ export default function PostPreview({
 
           </div>
         </div>
-      </a>
     </div >
   )
 }

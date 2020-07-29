@@ -9,6 +9,20 @@ export default function Meta() {
         sizes="180x180"
         href="/favicon/apple-touch-icon.png"
       /> */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=UA-154808166-1"
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-154808166-1');
+            `,
+        }}
+      />
       <link
         rel="icon"
         type="image/png"
@@ -28,7 +42,7 @@ export default function Meta() {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content={`A blog from bennykok.com`}
+        content={`A place to share interesting discovery alone the way of indie game development, mostly with Unity`}
       />
       {/* <meta property="og:image" content={HOME_OG_IMAGE_URL} /> */}
     </Head>
