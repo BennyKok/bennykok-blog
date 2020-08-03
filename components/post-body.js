@@ -17,12 +17,17 @@ export default function PostBody({ content, title, author, date, has_affiliate_l
   if (has_affiliate_link) {
     let [isOpened, setIsOpened] = React.useState(false);
     disclosures = (
-      <div className="max-w-4xl mx-auto">
-        <button className='w-full focus:outline-none cursor-pointer text-sm px-4 md:px-6 py-3 bg-gray-100 transition-shadow duration-150 shadow-sm hover:shadow-md rounded-t border flex flex-row items-center justify-between' onClick={() => {
+      <div className="max-w-4xl mx-auto shadow-lg">
+        <button className={cn('w-full focus:outline-none cursor-pointer text-sm px-4 md:px-6 py-3 bg-gray-100 transition-shadow duration-150 border-t flex flex-row items-center justify-between',
+          {
+            'rounded-b': !isOpened,
+            'rounded-none': isOpened,
+          }
+        )} onClick={() => {
           setIsOpened(!isOpened)
         }}>
           <div className='ml-2 text-sm'>
-            Affiliate links used! Expand to learn more.
+            *Affiliate link used!
           </div>
           <div className={cn('mr-2', {
             'transform transition-transform rotate-0 duration-150': !isOpened,
@@ -32,7 +37,7 @@ export default function PostBody({ content, title, author, date, has_affiliate_l
             </IconContext.Provider></div>
         </button>
         <Collapse isOpened={isOpened}>
-          <div className="border-b flex flex-row items-center bg-gray-100 overflow-hidden p-6 shadow-lg max-w-4xl">
+          <div className="border-t flex flex-row items-center bg-gray-100 overflow-hidden p-6 shadow-sm max-w-4xl rounded-b">
             <div className="">
               <IconContext.Provider value={{ size: "20px", className: "opacity-75" }}>
                 <MdInfoOutline />
@@ -51,12 +56,10 @@ export default function PostBody({ content, title, author, date, has_affiliate_l
     // sm:z-10 sm:relative
     <div className="mt-0 lg:-mt-20 relative" >
 
-      {disclosures}
-
       {/* ml-0 lg:ml-10 */}
       <div className={cn(
-        "bg-white overflow-hidden px-4 md:px-8 pb-8 shadow-lg max-w-4xl mx-auto", {
-        'rounded-b': has_affiliate_link,
+        "bg-white overflow-hidden px-4 md:px-8 pb-6 pt-6 shadow-lg max-w-4xl mx-auto", {
+        'rounded-t': has_affiliate_link,
         'rounded': !has_affiliate_link,
       }
       )} >
@@ -72,6 +75,8 @@ export default function PostBody({ content, title, author, date, has_affiliate_l
         </div>
         {/* <RichText render={content} /> */}
       </div>
+
+      {disclosures}
 
     </div>
   )
