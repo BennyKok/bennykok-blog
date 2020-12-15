@@ -25,15 +25,17 @@ export default function Intro({ showBackNavigation }) {
             </Link>
           </div>
           :
-          <div className="py-4 flex flex-row items-center">
-            <img
-              src="/icon48.png"
-              className="w-10 h-10 rounded-full mr-3"
-            />
-            <h1 className="text-xl font-bold tracking-tighter leading-tight md:pr-8">
-              BennyKok
-          </h1>
-          </div>
+          <a href="https://www.bennykok.com/">
+            <div className="py-4 flex flex-row items-center">
+              <img
+                src="https://www.gravatar.com/avatar/adc52f79841f6f723c53f4305ea7111e?s=48"
+                className="w-10 h-10 rounded-full mr-3"
+              />
+              <h1 className="text-xl font-bold tracking-tighter leading-tight md:pr-8">
+                BennyKok
+              </h1>
+            </div>
+          </a>
         }
       </Container>
     </div>

@@ -12,6 +12,7 @@ export default function Index({ preview, allPosts }) {
     <>
       <Layout preview={preview}>
         <Head>
+          <link rel="shortcut icon" href="https://www.gravatar.com/avatar/adc52f79841f6f723c53f4305ea7111e?s=20" />
           <title>BennyKok</title>
           <script
             dangerouslySetInnerHTML={{
